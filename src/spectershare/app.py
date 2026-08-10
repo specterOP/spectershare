@@ -15,6 +15,8 @@ drop images that appear for everyone in real time.
 Images live in memory only (not written to --store); they clear on restart.
 """
 
+__version__ = "1.0.0"
+
 import argparse
 import json
 import os
@@ -988,6 +990,7 @@ def main():
     ap.add_argument("--host", default="0.0.0.0", help="bind address (default 0.0.0.0)")
     ap.add_argument("--store", metavar="FILE", help="keep TEXT in FILE so it survives a restart")
     ap.add_argument("--verbose", action="store_true", help="log every request")
+    ap.add_argument("--version", action="version", version="spectershare " + __version__)
     args = ap.parse_args()
 
     HUB = Hub(args.store)
@@ -1001,7 +1004,7 @@ def main():
 
     ip = lan_ip()
     bar = "-" * 46
-    print("\n  spectershare")
+    print("\n  spectershare " + __version__)
     print("  " + bar)
     print("  on this machine   http://localhost:%d/r/main" % args.port)
     print("  on your network   http://%s:%d/r/main" % (ip, args.port))

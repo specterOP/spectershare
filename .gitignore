@@ -17,3 +17,8 @@ env/
 *.swp
 .DS_Store
 Thumbs.db
+
+# packaging build output
+build/
+dist/
+*.egg-info/

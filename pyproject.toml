@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "spectershare"
+version = "1.0.0"
+description = "A codeshare-style live text & image pad for your local network. Zero dependencies, one file."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+authors = [{ name = "SpecterOP" }]
+keywords = ["lan", "pastebin", "clipboard", "self-hosted", "sse", "sharing", "local-network"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Communications :: File Sharing",
+    "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/SpecterOP/spectershare"
+Repository = "https://github.com/SpecterOP/spectershare"
+Issues = "https://github.com/SpecterOP/spectershare/issues"
+
+[project.scripts]
+spectershare = "spectershare.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spectershare"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/spectershare",
+    "README.md",
+    "LICENSE",
+]
