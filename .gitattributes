@@ -1,0 +1,7 @@
+# Normalize all text files to LF in the repository.
+# Kills the "LF will be replaced by CRLF" warning on Windows.
+* text=auto eol=lf
+
+# Explicitly treat these as text
+*.py   text eol=lf
+*.md   text eol=lf
