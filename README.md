@@ -7,6 +7,7 @@
 </p>
 
 <p align="center">
+  <img alt="PyPI" src="https://img.shields.io/pypi/v/spectershare?color=blue">
   <img alt="Python" src="https://img.shields.io/badge/python-3.8%2B-3776ab?logo=python&logoColor=white">
   <img alt="Dependencies" src="https://img.shields.io/badge/dependencies-none-brightgreen">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-blue">
@@ -45,11 +46,41 @@ leave your network.
 
 You need **Python 3.8 or newer**. Nothing else.
 
+Install from PyPI:
+
+```bash
+pip install spectershare
+```
+
+Then run it:
+
+```bash
+spectershare --port 5555
+```
+
+<details>
+<summary>Other ways to install</summary>
+
+Straight from GitHub (latest `main`):
+
+```bash
+pip install git+https://github.com/SpecterOP/spectershare.git
+```
+
+From a local clone, for hacking on it:
+
 ```bash
 git clone https://github.com/SpecterOP/spectershare.git
 cd spectershare
-python spectershare.py --port 5555
+pip install -e .
 ```
+
+You can also run it without installing, if you have the source:
+
+```bash
+python -m spectershare --port 5555
+```
+</details>
 
 The console prints two addresses:
 
@@ -69,7 +100,7 @@ typing. That's it.
 
 > **Windows note:** if you get `PermissionError: [WinError 10013]` on startup,
 > the port is inside a Windows-reserved range. Just pick another one:
-> `python spectershare.py --port 5555`. Ports like 5555, 7000, or anything above
+> `spectershare --port 5555`. Ports like 5555, 7000, or anything above
 > 49152 are usually clear.
 
 ## Usage
@@ -86,7 +117,7 @@ typing. That's it.
 ### Command-line options
 
 ```
-python spectershare.py [options]
+spectershare [options]
 
   --port PORT     port to listen on            (default 8080)
   --host HOST     bind address                 (default 0.0.0.0 = whole LAN)
@@ -107,8 +138,8 @@ stored server-side, and only a tiny "image added" event rides the live stream.
 Every client then pulls the actual image over a normal cached GET. That keeps
 the sync stream lean, so a big screenshot never stalls someone's typing.
 
-Everything runs in a single file on Python's built-in HTTP server — no
-framework, no build step, no `pip install`.
+Everything runs in a single module on Python's built-in HTTP server — no
+framework, no build step, no third-party dependencies.
 
 ## Security
 
@@ -123,7 +154,7 @@ Want it locked to just your machine? Bind to localhost and reach it over an SSH
 tunnel instead of exposing it to the LAN:
 
 ```bash
-python spectershare.py --host 127.0.0.1 --port 5555
+spectershare --host 127.0.0.1 --port 5555
 ```
 
 Images are held **in memory only** — they are never written to `--store` and
